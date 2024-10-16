@@ -12,6 +12,7 @@ abstract class Ctrl
     private $actions = array();
         
   
+    
     public function run($route, $request)
     {
 	    foreach($this->actions as $action)
