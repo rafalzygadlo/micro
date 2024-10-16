@@ -15,37 +15,35 @@ namespace Lib;
 class Request
 {
     
-    private $ctrl;
-    private $method;
     private $url;
-    private $param;
+    
+    private $contentType;
     
     public function __construct()
     {
-        $request_uri = $_SERVER['REQUEST_URI'];
-        $this->url = $request_uri;
-        if(isset($request_uri))
+        
+        if(isset($_SERVER['REQUEST_URI']) & 
+            isset($_SERVER['CONTENT_TYPE']))
         {
-            @list($this->ctrl, $this->method, $this->param) = explode("/", $request_uri, 3);
+            $this->url = $_SERVER['REQUEST_URI'];
+            $this->contentType = $_SERVER['CONTENT_TYPE'];
         }
-       
+        else
+        {
+
+        }
     }
     
+    public function getContentType()
+    {
+        return $this->contentType;
+    }
+
     public function getUrl()
     {
         return $this->url;
     }
-    
-    public function getCtrl()
-    {
-        return $this->ctrl;
-    }
-    
-    public function getMethod()
-    {
-        return $this->method;
-    }
-    
+        
     function getAuthorizationHeader()
     {
         $headers = null;

@@ -42,13 +42,18 @@ class Router
             if($route->load($request))
                 return;
         }
-
+        
         $msg = array
         (
             "message" => "not found"
         );
         
+        
+        print $request->getContentType();
+
         print json_encode($msg);
+        
+            
                 
     }
     

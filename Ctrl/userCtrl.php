@@ -24,16 +24,9 @@ use Model\userModel;
 
 class userCtrl extends authCtrl 
 {
-
-    
-    public function index($request)
+    public function index()
     {
         $view = new View();
-        $view->render('user/index');
-        
-    }
-    
-    
-    
-
+        $view->render('user/index');    
+    }   
 }

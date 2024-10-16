@@ -24,6 +24,7 @@ class Route
     /* which function name method in class*/
     private $method;
     
+    
     /* splitted uri */
     private $uri;
  
@@ -48,7 +49,7 @@ class Route
     {
         return $this->method;
     }
-      
+  
     private function checkCtrl()
     {
         $filename = CTRL_FOLDER . '/'. $this->ctrl . '.php';
