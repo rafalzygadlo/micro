@@ -1,0 +1,58 @@
+<div class="container">     
+     <h2><?php print __("Account"); ?></h2>
+     <div class="row"> 
+          <div class="col">
+          <br>     
+          <?php  $user = $this->values['user']; ?>
+          <h4><b><?php print $user->empl_id; ?></b></h4>
+          <?php print $user->first_name ?>
+          <b><?php print $user->last_name; ?></b>
+          <br>mam urlopu: <b>16 dni</b>
+          </div>
+     </div>
+     <br>
+     <div class="row"> 
+          <div class="col">
+               <b>Ustawienia konta</b>
+          <ul>
+               <li><a href="time">Time of work</a></li>
+               <li><a href>Edit</a></li>
+               <li><a href>Change Password</a></li>
+               <li><a href>Edit Address</a></li>
+          </ul>
+          </div>
+
+          <div class="col">
+               <b>Moje sprawy</b>
+               <ul>
+                    <li><a href>Urlop</a></li>
+                    <li><a href>Choroba</a></li>
+                    <li><a href>Smieci</a></li>
+                    <li><a href>Wiadomosci</a></li>
+               </ul>
+          </div>
+     
+          <div class="col">
+               <b>Mieszkanie</b>
+               <ul>
+                    <li><a href>Zgłoś awarię</a></li>
+                    <li><a href>Smieci</a></li>
+                    <li><a href>Wiadomosci</a></li>
+               </ul>
+
+          </div>
+
+          <div class="col">
+               <b>Kontakty</b>
+               <ul>
+                    <li><a href>Lekarze</a></li>
+                    <li><a href>Rathaus</a></li>
+                    <li><a href>Dentysci</a></li>
+               </ul>
+          </div>
+
+
+     </div>
+
+</div>
+

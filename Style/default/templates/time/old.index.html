@@ -1,0 +1,30 @@
+<div class="container">     
+     <h2><?php print __("Time"); ?> </h2>    
+     <br>
+     <h5><?php print __("Days") ." - ". $days ?></h5>
+     
+     <table class="table">
+               
+
+          <?php foreach($times as $time) { ?>             
+               <tr>
+                    <td><b> <?php print date("d",strtotime($time->date)); ?></b></td>
+                    <td><?php print date("D",strtotime($time->date)); ?></td>
+                    <td><?php print $time->date ?></td>
+                    <td><?php print $time->pforte_zu ?></td>
+                    <td><?php print $time->pforte_ab ?></td>
+                    <td>
+                    <?php
+                    $date1=date_create($time->pforte_zu);
+                    $date2=date_create($time->pforte_ab);
+                    $diff = date_diff($date1,$date2);
+                    print sprintf('%02d:%02d', $diff->h, $diff->i);
+                    ?>
+                    </td>
+
+               </tr> 
+          <?php }  ?>
+     </table>
+     </div>
+</div>
+

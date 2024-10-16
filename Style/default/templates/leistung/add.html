@@ -1,0 +1,49 @@
+<?php
+     use Lib\Msg;
+     print_r($this->model);
+?>
+<div class="row">
+     <div class="col-md-4 col-md-offset-4">
+        <form method="POST">
+            <fieldset>
+                <legend><?php print Msg::Get('_NEW_','New') ?></legend>
+                <a href="<?php print $this->CtrlName ?>"  class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left"> </span> </a>
+                <hr>
+                
+                    <div class="form-group">
+                        <label class="control-label"><?php print Msg::Get('_DATE_','Date') ?></label>
+                         <div class='input-group date' id='d2'>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="<?php print Msg::Get('_DATE_','Date') ?>" 
+                            name="<?php print LEISTUNG_DATE ?>" 
+                            value="<?php print $this->model->getDate()->getValue() ?>">
+                        <?php print $this->RenderValidationError($this->model->getDate()->getErrorText()); ?>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                         </div>
+                    </div>
+                 
+                    <div class="form-group">
+                        <label class="control-label"><?php print Msg::Get('_COLI_','Coli') ?></label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            placeholder="<?php print Msg::Get('_COLI_','Coli') ?>" 
+                            name="<?php print LEISTUNG_COLI ?>" 
+                            value="<?php print $this->model->getColi()->getValue() ?>">
+                        <?php print $this->RenderValidationError($this->model->getColi()->getErrorText()); ?>
+                    </div>
+
+                    <div class="form-group">
+                            <input type="hidden" name="<?php print METHOD ?>" value="<?php print METHOD_SAVE ?>">
+                            <button type="submit" class="btn btn-primary"><?php print Msg::Get('_SAVE_','Save') ?></button>
+                            <a href="<?php print $this->getCtrlName() ?>"  class="btn btn-default"><?php print Msg::Get('_CANCEL_','Cancel') ?></a>
+                    </div>
+                    
+                
+            </fieldset>
+        </form>
+    </div>
+</div>
+

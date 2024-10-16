@@ -1,0 +1,5 @@
+curl -v -k POST https://test-api.zygadlo.org/user \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: Bearer 3bm4GABUWvkksWNUyA9V6mkpz7XSrwxYWq5li7zdSGMbyCK3MEyJiBZn7Od8'
+

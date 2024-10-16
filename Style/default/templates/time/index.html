@@ -1,0 +1,129 @@
+
+<div class="row">
+    <div class="col-sm-12">
+     <div class="row">
+        <div class="col-sm-12">
+          <h3><a href="home"></a> <?php print $this->get_title() ?> </h3>
+        </div>
+      </div>
+
+ 
+  
+      <select id="ym">
+        <option value="2021-08-01">2021-08</option>
+        <option value="2021-07-01">2021-07</option>
+      </select>
+
+
+      <table
+            class="table"
+            data-url="/Json/time"
+            data-query-params="queryParams"
+            id="table">
+         </table>
+    </div>
+</div>
+
+<script>
+    
+  window.operateEvents = {
+    'click .like': function (e, value, row, index) {
+      alert('You click like action, row: ' + JSON.stringify(row))
+    },
+    'click .remove': function (e, value, row, index) {
+      $table.bootstrapTable('remove', {
+        field: 'id',
+        values: [row.id]
+      })
+    }
+  };
+   
+  var $table = $('#table');
+
+  function operateFormatter(value, row, index) {
+    return [
+      '<a class="like" href="javascript:void(0)" title="Edit">',
+      '<i class="fa fa-edit"></i>',
+      '</a>  ',
+      '<a class="remove" href="javascript:void(0)" title="Remove">',
+      '<i class="fa fa-trash"></i>',
+      '</a>'
+    ].join('')
+  }
+
+  function queryParams(params) 
+  {
+    params.ym = $('#ym').val();    
+    return params;
+  }
+
+  $(function() {
+    $('#ym').change(function () 
+    {
+      $table.bootstrapTable('refresh');
+    })
+  });
+
+
+  $(function() {
+    $table.bootstrapTable({
+      sortable: true,
+      pagination:false,
+      search:true,
+      toolbar:".toolbar",
+      showRefresh:true,
+      showToggle:true,
+      showColumns:true,
+      showFullscreen:true,
+      detailView:false,
+      queryParams:"queryParams",
+  
+      columns: [
+      {
+        field: 'operate',
+        title: 'actions',
+        align: 'center',
+        width: 50,
+        clickToSelect: false,
+        formatter: operateFormatter,
+        events: window.operateEvents
+      },
+      {
+        title: 'id',
+        field: 'times_id',
+        align: 'center',   
+        sortable:true
+      },
+      {
+        title: 'Valid',
+        field: 'valid',
+        align: 'center',   
+        sortable:true
+      },
+      {
+        title: 'date',
+        field: 'date',
+        align: 'center',   
+        sortable:true
+      }, 
+      {
+        title: 'ZU',
+        field: 'pforte_zu',
+        sortable:true
+      }, 
+      {
+        title: 'AB',
+        field: 'pforte_ab',
+        filterControl: 'input',
+        sortable:true,
+      }, 
+      {
+        title: 'time',
+        field: 'time',
+        sortable:true
+      }
+           
+      ]
+    });
+  });
+</script>

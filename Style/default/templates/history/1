@@ -1,0 +1,1 @@
+                        <?php //$this->RenderAsSelect($this->Languages,$this->IdLang->Value ,Msg::Get('_LANGUAGE_','Language'),IDLANG) ?>

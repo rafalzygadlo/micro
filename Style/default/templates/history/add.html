@@ -1,0 +1,57 @@
+<?php
+    use Lib\Msg;
+?>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <form method="POST">
+            <fieldset>
+                <legend><?php print $this->ViewTitle  ?></legend>
+                 <a href="<?php print $this->CtrlName ?>"  class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left"> </span> </a>
+               
+                <div class="form-group pull-right">
+                    <input type="hidden" name="<?php print ID ?>" value="<?php print $this->IdHistory->Value ?>">
+                    <input type="hidden" name="<?php print IDHISTORY ?>" value="<?php print $this->IdHistory->Value ?>">
+                    <input type="hidden" name="<?php print METHOD ?>" value="<?php print METHOD_SAVE ?>">
+                    <button type="submit" class="btn btn-primary"><?php print Msg::Get('_SAVE_','Save') ?></button>
+                    <a href="<?php print $this->CtrlName ?>" class="btn btn-default"><?php print Msg::Get('_CANCEL_','Cancel') ?></a>
+                </div>
+                <hr>
+                    <?php print $this->RenderValidationError($this->IdCar->ErrorText); ?>
+                    <?php $this->RenderAsSelect($this->Cars,$this->IdCar->Value ,Msg::Get('_CAR_','Car'),IDCAR) ?>
+                    <hr>
+                    <?php print $this->RenderValidationError($this->IdUser->ErrorText); ?>
+                    <?php $this->RenderAsSelect($this->Users,$this->IdUser->Value ,Msg::Get('_USER_','User'),IDUSER) ?>
+                    <hr>
+                    <div class="form-group">
+                        <?php print $this->RenderValidationError($this->StartDate->ErrorText); ?>
+                        <label class="control-label"><?php print Msg::Get('_START_DATE_','Start date') ?></label>
+                        <div class='input-group date' id='d1'>
+                            <input type='text' class="form-control" name="<?php print HISTORY_START_DATE ?>" value="<?php print $this->StartDate->Value ?>">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                        
+                    </div>
+                
+                    <div class="form-group">
+                        <?php print $this->RenderValidationError($this->EndDate->ErrorText); ?>
+                        <label class="control-label"><?php print Msg::Get('_END_DATE_','End date') ?></label>
+                        <div class='input-group date' id='d2'>
+                            <input type='text' class="form-control" name="<?php print HISTORY_END_DATE ?>" value="<?php print $this->EndDate->Value ?>">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                         
+                    </div>
+                    <hr>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+ <script type="text/javascript">
+    $(function ()
+    {
+        $('#d1').datetimepicker({ locale: 'pl', format: 'YYYY-MM-DD HH:mm' });
+        $('#d2').datetimepicker({ locale: 'pl', format: 'YYYY-MM-DD HH:mm' });
+    });
+</script>
+

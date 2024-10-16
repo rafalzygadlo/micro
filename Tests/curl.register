@@ -1,0 +1,4 @@
+curl -v -k POST https://test-api.zygadlo.org/register \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/json' \
+-d '{"email":"qotsa@rewe.org","password":"password"}'

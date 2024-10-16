@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+
+  nginx:
+    container_name: testapi.nginx
+    image: nginx:latest
+    build: './nginx/'
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - php
+      - mysql
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./nginx/certs:/etc/nginx/certs
+      - ./..:/var/www/html
+    restart: unless-stopped
+
+  php:
+    container_name: testapi.php
+    image: php:8.2-fpm
+    build: './php/'
+    extra_hosts:
+     - "host.docker.internal:host-gateway"
+    expose:
+       - 9000
+    links:
+       - mysql
+    environment:
+      XDEBUG_MODE: debug
+      XDEBUG_CONFIG: client_host=host.docker.internal client_port=9003
+    volumes:
+      - ./..:/var/www/html
+    restart: unless-stopped
+
+  mysql:
+    container_name: testapi.mysql
+    build: './mysql/'
+    image: mysql:latest
+    ports: 
+      - "3306:3306"
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./..:/var/www/html
+    environment:
+      - MYSQL_DATABASE=db
+      - MYSQL_ROOT_PASSWORD=pwd
+      - MYSQL_USER=usr
+      - MYSQL_PASSWORD=pwd
+    restart: unless-stopped
+
+
